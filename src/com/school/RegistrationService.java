@@ -34,6 +34,23 @@ public class RegistrationService {
         courses.add(course);
     }
 
+    // Create a course by name and capacity and return the created Course
+    public Course createCourse(String courseName, int capacity) {
+        Course course = new Course(courseName, capacity);
+        courses.add(course);
+        return course;
+    }
+
+    public boolean enrollStudentInCourse(Student student, Course course) {
+        boolean added = course.addStudent(student);
+        if (added) {
+            System.out.println("✅ Student enrolled successfully!");
+        } else {
+            System.out.println("❌ Enrollment failed — course is full!");
+        }
+        return added;
+    }
+
     public List<Student> getStudents() {
         return students;
     }
